@@ -8,20 +8,57 @@
 		"no-console": "error",
 		"no-tabs": "off",
 		"max-len": "off",
-		"comma-dangle": "off",
-		"indent": ["error", "tab"],
-		"linebreak-style": ["error", "unix"],
-		"function-paren-newline": "off",
-		"operator-linebreak": ["error", "none"],
-		"arrow-parens": ["error", "always"],
-		"quotes": "warn",
-		"semi": "error",
-		"object-curly-newline": "off",
+		"comma-dangle": [
+			"error",
+			"never"
+		],
+		"indent": [
+			"error",
+			"tab"
+		],
+		"linebreak-style": [
+			"error",
+			"unix"
+		],
+		"function-paren-newline": [
+			"error",
+			"multiline"
+		],
+		"operator-linebreak": [
+			"error",
+			"none"
+		],
+		"arrow-parens": [
+			"error",
+			"always"
+		],
+		"quotes": [
+			"warn",
+			"single"
+		],
+		"semi": [
+			"error",
+			"always"
+		],
+		"object-curly-newline": [
+			"error",
+			{
+				"multiline": true
+			}
+		],
 		"no-restricted-syntax": "off",
-		"no-param-reassign": "off",
+		"no-param-reassign": [
+			"error",
+			{
+				"props": false
+			}
+		],
 		"no-restricted-properties": "off",
 		"no-underscore-dangle": "off",
 		"guard-for-in": "off",
-		"curly": "off"
+		"curly": [
+			"error",
+			"multi-line"
+		]
 	}
 }

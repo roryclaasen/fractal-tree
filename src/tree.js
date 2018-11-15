@@ -1,14 +1,34 @@
+import { GenerateHSBColor } from './util';
 import Branch from './branch';
-
+/**
+ * Tree, contains branches
+ *
+ * @export
+ * @class Tree
+ */
 export default class Tree {
+	/**
+	 * Remkate the tree from the root with the options specified
+	 *
+	 * @param {P5.Vector[]} root
+	 * @param {*} options
+	 * @memberof Tree
+	 */
 	constructor(root, options) {
 		this.options = options;
 		this.makeTree(root, options);
 	}
 
+	/**
+	 * Remkate the tree from the root with the options specified
+	 *
+	 * @param {P5.Vector[]} root
+	 * @param {*} options
+	 * @memberof Tree
+	 */
 	makeTree(root, options) {
 		this.options = options;
-		this.rootBranch = new Branch(root[0], root[1], options.angle, options.branchMultiplier);
+		this.rootBranch = new Branch(root[0], root[1], options);
 		this.branches = [];
 		this.branches[0] = this.rootBranch;
 		for (let i = 0; i < options.treeLength; i += 1) {
@@ -31,7 +51,7 @@ export default class Tree {
 		for (let i = 0; i < this.branches.length; i += 1) {
 			const branch = this.branches[i];
 
-			sketch.stroke(this.generateColor(branch.level, treeLength));
+			sketch.stroke(GenerateHSBColor(branch.level, treeLength, this.options.useColors));
 			branch.draw(sketch);
 
 			if (leaves && branch.level === treeLength - 1) {
@@ -41,16 +61,5 @@ export default class Tree {
 		}
 
 		sketch.colorMode(sketch.RGB, 255);
-	}
-
-	generateColor(index, length) {
-		let h = length;
-		let s = 0;
-		const b = length;
-		if (this.options.useColors) {
-			h = index;
-			s = length;
-		}
-		return [h, s, b, length];
 	}
 }

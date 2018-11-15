@@ -2,7 +2,7 @@
 	"name": "fractal-tree",
 	"private": true,
 	"version": "0.1.0",
-	"description": "Fractal Tree",
+	"description": "Simple Fractal Tree Generator",
 	"scripts": {
 		"start": "webpack-dev-server --open --config webpack.dev.js",
 		"build": "webpack --config webpack.prod.js",

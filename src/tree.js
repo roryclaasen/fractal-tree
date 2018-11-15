@@ -24,12 +24,22 @@ export default class Tree {
 	}
 
 	draw(sketch) {
-		sketch.colorMode(sketch.HSB, this.options.treeLength);
+		const { treeLength, leaves } = this.options;
+
+		sketch.colorMode(sketch.HSB, treeLength);
+
 		for (let i = 0; i < this.branches.length; i += 1) {
 			const branch = this.branches[i];
-			sketch.stroke(this.generateColor(branch.level, this.options.treeLength));
+
+			sketch.stroke(this.generateColor(branch.level, treeLength));
 			branch.draw(sketch);
+
+			if (leaves && branch.level === treeLength - 1) {
+				sketch.stroke(treeLength, 0, treeLength, treeLength);
+				sketch.ellipse(branch.end.x, branch.end.y, 1);
+			}
 		}
+
 		sketch.colorMode(sketch.RGB, 255);
 	}
 
@@ -38,8 +48,8 @@ export default class Tree {
 		let s = 0;
 		const b = length;
 		if (this.options.useColors) {
-			s = length;
 			h = index;
+			s = length;
 		}
 		return [h, s, b, length];
 	}

@@ -1,7 +1,7 @@
 import P5 from 'p5';
 
 /**
- * Branches for the tree
+ * Branches for the Tree
  *
  * @export
  * @class Branch
@@ -9,10 +9,10 @@ import P5 from 'p5';
 export default class Branch {
 	/**
 	 * Creates an instance of Branch.
-	 * @param {P5.Vector} begin
-	 * @param {P5.Vector} end
+	 * @param {P5.Vector} begin Start Node
+	 * @param {P5.Vector} end End Node
 	 * @param {*} options
-	 * @param {number} [level=0]
+	 * @param {number} [level=0] How far along is the Branch
 	 * @memberof Branch
 	 */
 	constructor(begin, end, options, level = 0) {
@@ -35,9 +35,9 @@ export default class Branch {
 
 	/**
 	 * Create child branch, left or right
-	 * @param {number} level
+	 * @param {number} level How far along is the Branch
 	 * @param {boolean} [left=false]
-	 * @returns {Branch}
+	 * @returns {Branch} New child Branch Object
 	 * @memberof Branch
 	 */
 	branch(level, left = false) {

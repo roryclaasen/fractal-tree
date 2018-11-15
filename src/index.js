@@ -74,7 +74,7 @@ const myp5 = new P5((sketch) => {
 	const optTreeLength = gui.add(options, 'treeLength', 1, 20);
 	optTreeLength.onChange((val) => makeTrees());
 
-	const optAngle = gui.add(options, 'angle', -Math.PI, Math.PI);
+	const optAngle = gui.add(options, 'angle', -Math.PI, Math.PI, 0.1);
 	optAngle.onChange((val) => makeTrees());
 
 	const optBranchMultiplier = gui.add(options, 'branchMultiplier', 0.1, 1);
@@ -84,7 +84,7 @@ const myp5 = new P5((sketch) => {
 	offset.add(options, 'xOffset', -width, width);
 	offset.add(options, 'yOffset', -height, height);
 	offset.add(options, 'scale', 0, 10);
-	offset.add(options, 'rotate', -Math.PI, Math.PI);
+	offset.add(options, 'rotate', -Math.PI, Math.PI, 0.1);
 
 	const appearance = gui.addFolder('Appearance');
 

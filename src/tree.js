@@ -43,6 +43,11 @@ export default class Tree {
 		}
 	}
 
+	/**
+	 * Draw the current Tree
+	 * @param {*} sketch
+	 * @memberof Tree
+	 */
 	draw(sketch) {
 		const { treeLength, leaves } = this.options;
 

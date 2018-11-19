@@ -36,7 +36,7 @@ export default class Branch {
 	/**
 	 * Create child branch, left or right
 	 * @param {number} level How far along is the Branch
-	 * @param {boolean} [left=false]
+	 * @param {boolean} [left=false] Is the left most branch
 	 * @returns {Branch} New child Branch Object
 	 * @memberof Branch
 	 */

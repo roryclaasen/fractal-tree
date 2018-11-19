@@ -80,14 +80,13 @@ const myp5 = new P5((sketch) => {
 	const optBranchMultiplier = gui.add(options, 'branchMultiplier', 0.1, 1);
 	optBranchMultiplier.onChange((val) => makeTrees());
 
-	const offset = gui.addFolder('Translate');
+	const offset = gui.addFolder('Transform');
 	offset.add(options, 'xOffset', -width, width);
 	offset.add(options, 'yOffset', -height, height);
 	offset.add(options, 'scale', 0, 10);
 	offset.add(options, 'rotate', -Math.PI, Math.PI, 0.1);
 
 	const appearance = gui.addFolder('Appearance');
-
 	appearance.add(options, 'useColors');
 	appearance.addColor(options, 'background');
 	appearance.add(options, 'leaves');

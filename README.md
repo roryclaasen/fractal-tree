@@ -30,7 +30,7 @@ The angle of each child branch
 
 Child branch length multiplier based of parent branch
 
-### Translate
+### Transform
 
 #### X Offset
 
@@ -54,7 +54,7 @@ Scale the Tree
 
 > Default: `0`
 
-Rotate the Tree
+Rotate the Tree around the root of the tree
 
 ### Appearance
 

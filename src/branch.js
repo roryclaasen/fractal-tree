@@ -26,7 +26,7 @@ export default class Branch {
 
 	/**
 	 * Draw the current branch
-	 * @param {*} sketch
+	 * @param {P5} sketch
 	 * @memberof Branch
 	 */
 	draw(sketch) {
@@ -41,7 +41,7 @@ export default class Branch {
 	 * @memberof Branch
 	 */
 	branch(level, left = false) {
-		const { angle, branchMultiplier } = this.options;
+		const { angle, branchMultiplier } = this.options.tree;
 
 		const dir = P5.Vector.sub(this.end, this.begin);
 		dir.rotate(angle * (left ? 1 : -1));

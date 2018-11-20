@@ -4,31 +4,37 @@
 
 [p5](https://github.com/processing/p5.js) visualisation of a Fractal Tree.
 
-## Tree Options
+## Options
 
-### Length
+### Tree
+
+#### Length
 
 > Default: `200`
 
 The length of the starting branch
 
-### Tree Length
+#### Max Branches
 
 > Default: `10`
 
 How many steps of branches are there
 
-### Angle
+#### Angle
 
 > Default: `0.79`
 
 The angle of each child branch
 
-### Branch Multiplier
+#### Branch Multiplier
 
 > Default: `0.67`
 
 Child branch length multiplier based of parent branch
+
+#### Reset
+
+Resets all _Tree_ options to default
 
 ### Transform
 
@@ -55,6 +61,14 @@ Scale the Tree
 > Default: `0`
 
 Rotate the Tree around the root of the tree
+
+#### Center
+
+Button to set the offsets centrally on the screen
+
+#### Reset
+
+Resets all _Transform_ options to default
 
 ### Appearance
 

@@ -31,7 +31,7 @@ export default class Tree {
 		this.rootBranch = new Branch(root[0], root[1], options);
 		this.branches = [];
 		this.branches[0] = this.rootBranch;
-		for (let i = 0; i < options.treeLength; i += 1) {
+		for (let i = 1; i < options.tree.maxBranches; i += 1) {
 			for (let j = this.branches.length - 1; j >= 0; j -= 1) {
 				const branch = this.branches[j];
 				if (!branch.finished) {
@@ -45,22 +45,22 @@ export default class Tree {
 
 	/**
 	 * Draw the current Tree
-	 * @param {*} sketch
+	 * @param {P5} sketch
 	 * @memberof Tree
 	 */
 	draw(sketch) {
-		const { treeLength, leaves } = this.options;
+		const { maxBranches } = this.options.tree;
 
-		sketch.colorMode(sketch.HSB, treeLength);
+		sketch.colorMode(sketch.HSB, maxBranches);
 
 		for (let i = 0; i < this.branches.length; i += 1) {
 			const branch = this.branches[i];
 
-			sketch.stroke(GenerateHSBColor(branch.level, treeLength, this.options.useColors));
+			sketch.stroke(GenerateHSBColor(branch.level, maxBranches, this.options.appearance.useColors));
 			branch.draw(sketch);
 
-			if (leaves && branch.level === treeLength - 1) {
-				sketch.stroke(treeLength, 0, treeLength, treeLength);
+			if (this.options.appearance.leaves && branch.level === maxBranches - 1) {
+				sketch.stroke(maxBranches, 0, maxBranches, maxBranches);
 				sketch.ellipse(branch.end.x, branch.end.y, 1);
 			}
 		}

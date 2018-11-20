@@ -14,10 +14,12 @@ const options = {
 		angle: Math.PI / 4,
 		branchMultiplier: 0.67,
 		reset: () => {
-			options.tree.xOffset = 200;
-			options.tree.yOffset = 10;
-			options.tree.scale = Math.PI / 4;
-			options.tree.rotate = 0.67;
+			options.tree.length = 200;
+			options.tree.maxBranches = 10;
+			options.tree.angle = Math.PI / 4;
+			options.tree.branchMultiplier = 0.67;
+			// eslint-disable-next-line no-use-before-define
+			makeTrees();
 		}
 	},
 	transform: {
@@ -42,6 +44,10 @@ const options = {
 		leaves: true,
 		mirror: 'off',
 		mirrorOptions: ['off', 'y', 'x y']
+	},
+	save: () => {
+		// eslint-disable-next-line no-use-before-define
+		myp5.saveCanvas('fractal_tree');
 	}
 };
 
@@ -66,10 +72,10 @@ function makeTrees() {
 
 const gui = new GUI();
 const treeOptions = gui.addFolder('Tree');
-treeOptions.add(options.tree, 'length', 0, 500).onChange((val) => makeTrees());
-treeOptions.add(options.tree, 'maxBranches', 1, 20, 1).onChange((val) => makeTrees());
-treeOptions.add(options.tree, 'angle', -Math.PI, Math.PI, 0.1).onChange((val) => makeTrees());
-treeOptions.add(options.tree, 'branchMultiplier', 0.1, 2).onChange((val) => makeTrees());
+treeOptions.add(options.tree, 'length', 0, 500).onChange((val) => makeTrees()).listen();
+treeOptions.add(options.tree, 'maxBranches', 1, 20, 1).onChange((val) => makeTrees()).listen();
+treeOptions.add(options.tree, 'angle', -Math.PI, Math.PI, 0.1).onChange((val) => makeTrees()).listen();
+treeOptions.add(options.tree, 'branchMultiplier', 0.1, 2).onChange((val) => makeTrees()).listen();
 treeOptions.add(options.tree, 'reset');
 
 const offset = gui.addFolder('Transform');
@@ -85,6 +91,8 @@ appearance.add(options.appearance, 'useColors');
 appearance.addColor(options.appearance, 'background');
 appearance.add(options.appearance, 'leaves');
 appearance.add(options.appearance, 'mirror', options.appearance.mirrorOptions);
+
+gui.add(options, 'save');
 
 /**
  * Wrapper function for sketch

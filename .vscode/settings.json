@@ -1,11 +1,3 @@
 {
-	"files.eol": "\n",
-	"spellright.language": [
-		"en"
-	],
-	"spellright.documentTypes": [
-		"markdown",
-		"latex",
-		"plaintext"
-	]
+	"files.eol": "\n"
 }

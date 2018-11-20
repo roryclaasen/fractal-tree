@@ -22,6 +22,22 @@ const options = {
 			makeTrees();
 		}
 	},
+	mutate: {
+		active: false,
+		branch: 1,
+		angle: 0,
+		branchMultiplier: 0,
+		make: () => {
+			// eslint-disable-next-line no-use-before-define
+			makeTrees();
+		},
+		reset: () => {
+			options.mutate.active = false;
+			options.mutate.branch = 0;
+			options.mutate.angle = 1;
+			options.mutate.branchMultiplier = 0;
+		}
+	},
 	transform: {
 		xOffset: 0,
 		yOffset: 0,
@@ -78,10 +94,18 @@ treeOptions.add(options.tree, 'angle', -Math.PI, Math.PI, 0.1).onChange((val) =>
 treeOptions.add(options.tree, 'branchMultiplier', 0.1, 2).onChange((val) => makeTrees()).listen();
 treeOptions.add(options.tree, 'reset');
 
+const mutate = gui.addFolder('Mutate');
+mutate.add(options.mutate, 'active').onChange((val) => makeTrees());
+mutate.add(options.mutate, 'branch', 0, 1, 0.05).onChange((val) => makeTrees()).listen();
+mutate.add(options.mutate, 'angle', 0, Math.PI, 0.1).onChange((val) => makeTrees()).listen();
+mutate.add(options.mutate, 'branchMultiplier', 0, 1, 0.05).onChange((val) => makeTrees()).listen();
+mutate.add(options.mutate, 'make');
+mutate.add(options.mutate, 'reset');
+
 const offset = gui.addFolder('Transform');
 offset.add(options.transform, 'xOffset', -width, width).listen();
 offset.add(options.transform, 'yOffset', -height, height).listen();
-offset.add(options.transform, 'scale', 0, 10).listen();
+offset.add(options.transform, 'scale', 0, 5).listen();
 offset.add(options.transform, 'rotate', -Math.PI, Math.PI, 0.1).listen();
 offset.add(options.transform, 'center');
 offset.add(options.transform, 'reset');

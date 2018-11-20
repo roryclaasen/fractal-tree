@@ -41,11 +41,19 @@ export default class Branch {
 	 * @memberof Branch
 	 */
 	branch(level, left = false) {
+		const { mutate } = this.options;
 		const { angle, branchMultiplier } = this.options.tree;
 
 		const dir = P5.Vector.sub(this.end, this.begin);
-		dir.rotate(angle * (left ? 1 : -1));
-		if (branchMultiplier) dir.mult(branchMultiplier);
+		let newAngle = angle;
+		let multiplier = branchMultiplier || 1;
+		if (mutate.active) {
+			newAngle += Math.random() * mutate.angle;
+			multiplier += (mutate.branchMultiplier * Math.random()) - (mutate.branchMultiplier / 2);
+		}
+		newAngle *= left ? 1 : -1;
+		dir.rotate(newAngle);
+		dir.mult(multiplier);
 
 		const newEnd = P5.Vector.add(this.end, dir);
 		const branch = new Branch(this.end, newEnd, this.options, level);

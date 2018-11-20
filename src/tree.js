@@ -35,8 +35,14 @@ export default class Tree {
 			for (let j = this.branches.length - 1; j >= 0; j -= 1) {
 				const branch = this.branches[j];
 				if (!branch.finished) {
-					this.branches.push(branch.branch(i, false));
-					this.branches.push(branch.branch(i, true));
+					let left = true;
+					let right = true;
+					if (options.mutate.active) {
+						left = Math.random() <= options.mutate.branch;
+						right = Math.random() <= options.mutate.branch;
+					}
+					if (left) this.branches.push(branch.branch(i, true));
+					if (right) this.branches.push(branch.branch(i, false));
 				}
 				this.branches[j].finished = true;
 			}

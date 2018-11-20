@@ -14,29 +14,34 @@
 
 ## Options
 
-- [Tree](#tree)
-  - [Length](#length)
-  - [Max Branches](#max-branches)
-  - [Angle](#angle)
-  - [Branch Multiplier](#branch-multiplier)
-  - [Reset Tree](#reset-tree)
-- [Transform](#transform)
-  - [X Offset](#x-offset)
-  - [Y Offset](#y-offset)
-  - [Scale](#scale)
-  - [Rotate](#rotate)
-  - [Center](#center)
-  - [Reset Transform](#reset-transform)
-- [Appearance](#appearance)
-  - [Use Colors](#use-colors)
-  - [Background](#background)
-  - [Leaves](#leaves)
-  - [Mirror](#mirror)
+- [Tree](#treelength)
+  - [Tree.Length](#treelength)
+  - [Tree.Max_Branches](#treemax_branches)
+  - [Tree.Angle](#treeangle)
+  - [Tree.Branch_Multiplier](#treebranch_multiplier)
+  - [Tree.Reset](#treereset)
+- [Mutate](#mutateactive)
+  - [Mutate.Active](#mutateactive)
+  - [Mutate.Branch](#mutatebranch)
+  - [Mutate.Angle](#mutateangle)
+  - [Mutate.Branch_Multiplier](#mutatebranch_multiplier)
+  - [Mutate.Make](#mutatemake)
+  - [Mutate.Reset](#mutatereset)
+- [Transform](#transformx_offset)
+  - [Transform.X_Offset](#transformx_offset)
+  - [Transform.Y_Offset](#transformy_offset)
+  - [Transform.Scale](#transformscale)
+  - [Transform.Rotate](#transformrotate)
+  - [Transform.Center](#transformcenter)
+  - [Transform.Reset](#transformreset)
+- [Appearance](#appearanceuse_colors)
+  - [Appearance.Use_Colors](#appearanceuse_colors)
+  - [Appearance.Background](#appearancebackground)
+  - [Appearance.Leaves](#appearanceleaves)
+  - [Appearance.Mirror](#appearancemirror)
 - [Save](#save)
 
-### Tree
-
-#### Length
+### Tree.Length
 
 > Default: `200`
 
@@ -48,7 +53,7 @@ Max: `500`
 
 The length of the starting branch
 
-#### Max Branches
+### Tree.Max_Branches
 
 > Default: `10`
 
@@ -60,7 +65,7 @@ Max: `20`
 
 How many steps of branches are there
 
-#### Angle
+### Tree.Angle
 
 > Default: `0.79`
 
@@ -72,7 +77,7 @@ Max: `PI`
 
 The angle of each child branch
 
-#### Branch Multiplier
+### Tree.Branch_Multiplier
 
 > Default: `0.67`
 
@@ -84,15 +89,81 @@ Max: `2`
 
 Child branch length multiplier based of parent branch
 
-#### Reset Tree
+### Tree.Reset
 
 Type: `Button`
 
 Resets all _Tree_ options to default values
 
-### Transform
+### Mutate.Active
 
-#### X Offset
+> Default: `false`
+
+Type: `boolean`
+
+If the tree will get mutated or not
+
+### Mutate.Branch
+
+> Default: `1`
+
+Type: `number`
+
+Min: `0`
+
+Max: `1`
+
+Percentage chance of the child Branches being created
+
+### Mutate.Angle
+
+> Default: `0`
+
+Type: `number`
+
+Min: `0`
+
+Max: `PI`
+
+Intensity of angle interference
+
+__Example__
+
+```javascript
+tree.angle += Math.random() * mutate.angle;
+```
+
+### Mutate.Branch_Multiplier
+
+> Default: `0`
+
+Type: `number`
+
+Min: `0`
+
+Max: `1`
+
+Intensity of angle interference
+
+__Example__
+
+```javascript
+tree.branchMultiplier += (mutate.branchMultiplier * Math.random()) - (mutate.branchMultiplier / 2);
+```
+
+### Mutate.Make
+
+Type: `Button`
+
+Regenerates the tree with new values
+
+### Mutate.Reset
+
+Type: `Button`
+
+Resets all _Mutate_ options to default values
+
+### Transform.X_Offset
 
 > Default: `0`
 
@@ -104,7 +175,7 @@ Max: `width`
 
 Translate the Tree on the X axis
 
-#### Y Offset
+### Transform.Y_Offset
 
 > Default: `0`
 
@@ -116,7 +187,7 @@ Max: `height`
 
 Translate the Tree on the Y axis
 
-#### Scale
+### Transform.Scale
 
 > Default: `1`
 
@@ -124,11 +195,11 @@ Type: `number`
 
 Min: `0`
 
-Max: `10`
+Max: `5`
 
 Scale the Tree
 
-#### Rotate
+### Transform.Rotate
 
 > Default: `0`
 
@@ -140,21 +211,19 @@ Max: `PI`
 
 Rotate the Tree around the root of the tree
 
-#### Center
+### Transform.Center
 
 Type: `Button`
 
 Button to set the offsets centrally on the screen
 
-#### Reset Transform
+### Transform.Reset
 
 Type: `Button`
 
 Resets all _Transform_ options to default values
 
-### Appearance
-
-#### Use Colors
+### Appearance.Use_Colors
 
 > Default: `true`
 
@@ -162,7 +231,7 @@ Type: `boolean`
 
 Branches have different colors. If false all branches are white
 
-#### Background
+### Appearance.Background
 
 > Default: `#000000`
 
@@ -170,7 +239,7 @@ Type: `color`
 
 Background color of the window
 
-#### Leaves
+### Appearance.Leaves
 
 > Default: `true`
 
@@ -178,7 +247,7 @@ Type: `boolean`
 
 Shows white dots on the ends of all the end branches
 
-#### Mirror
+### Appearance.Mirror
 
 > Default: `off`
 

@@ -14,27 +14,27 @@
 
 ## Options
 
-- [Tree](#treelength)
+- Tree
   - [Tree.Length](#treelength)
   - [Tree.Max_Branches](#treemax_branches)
   - [Tree.Angle](#treeangle)
   - [Tree.Branch_Multiplier](#treebranch_multiplier)
   - [Tree.Reset](#treereset)
-- [Mutate](#mutateactive)
+- Mutate
   - [Mutate.Active](#mutateactive)
   - [Mutate.Branch](#mutatebranch)
   - [Mutate.Angle](#mutateangle)
   - [Mutate.Branch_Multiplier](#mutatebranch_multiplier)
   - [Mutate.Make](#mutatemake)
   - [Mutate.Reset](#mutatereset)
-- [Transform](#transformx_offset)
+- Transform
   - [Transform.X_Offset](#transformx_offset)
   - [Transform.Y_Offset](#transformy_offset)
   - [Transform.Scale](#transformscale)
   - [Transform.Rotate](#transformrotate)
   - [Transform.Center](#transformcenter)
   - [Transform.Reset](#transformreset)
-- [Appearance](#appearanceuse_colors)
+- Appearance
   - [Appearance.Use_Colors](#appearanceuse_colors)
   - [Appearance.Background](#appearancebackground)
   - [Appearance.Leaves](#appearanceleaves)
@@ -43,87 +43,65 @@
 
 ### Tree.Length
 
-> Default: `200`
-
-Type: `number`
-
-Min: `0`
-
-Max: `500`
+| Type   | Default | Min | Max   |
+|:------:|:-------:|:---:|:-----:|
+| Number | `200`   | `0` | `500` |
 
 The length of the starting branch
 
 ### Tree.Max_Branches
 
-> Default: `10`
-
-Type: `number`
-
-Min: `1`
-
-Max: `20`
+| Type   | Default | Min | Max  |
+|:------:|:-------:|:---:|:----:|
+| Number | `10`    | `1` | `20` |
 
 How many steps of branches are there
 
 ### Tree.Angle
 
-> Default: `0.79`
-
-Type: `number`
-
-Min: `-PI`
-
-Max: `PI`
+| Type   | Default | Min   | Max  |
+|:------:|:-------:|:-----:|:----:|
+| Number | `0.7`   | `-PI` | `PI` |
 
 The angle of each child branch
 
 ### Tree.Branch_Multiplier
 
-> Default: `0.67`
-
-Type: `number`
-
-Min: `0.1`
-
-Max: `2`
+| Type   | Default | Min   | Max |
+|:------:|:-------:|:-----:|:---:|
+| Number | `0.6`   | `0.1` | `2` |
 
 Child branch length multiplier based of parent branch
 
 ### Tree.Reset
 
-Type: `Button`
+| Type   |
+|:------:|
+| Button |
 
 Resets all _Tree_ options to default values
 
 ### Mutate.Active
 
-> Default: `false`
-
-Type: `boolean`
+| Type    | Default |
+|:-------:|:-------:|
+| Boolean | `false` |
 
 If the tree will get mutated or not
 
 ### Mutate.Branch
 
-> Default: `1`
-
-Type: `number`
-
-Min: `0`
-
-Max: `1`
+| Type   | Default | Min | Max |
+|:------:|:-------:|:---:|:---:|
+| Number | `2`     | `0` | `2` |
 
 Percentage chance of the child Branches being created
 
 ### Mutate.Angle
 
-> Default: `0`
-
-Type: `number`
-
-Min: `0`
-
-Max: `PI`
+| Type   | Default | Min | Max |
+|:------:|:-------:|:---:|:---:|
+| Number | `0`     | `0` | `PI`|
 
 Intensity of angle interference
 
@@ -135,13 +113,9 @@ tree.angle += Math.random() * mutate.angle;
 
 ### Mutate.Branch_Multiplier
 
-> Default: `0`
-
-Type: `number`
-
-Min: `0`
-
-Max: `1`
+| Type   | Default | Min | Max |
+|:------:|:-------:|:---:|:---:|
+| Number | `0`     | `0` | `1` |
 
 Intensity of angle interference
 
@@ -153,81 +127,73 @@ tree.branchMultiplier += (mutate.branchMultiplier * Math.random()) - (mutate.bra
 
 ### Mutate.Make
 
-Type: `Button`
+| Type   |
+|:------:|
+| Button |
 
 Regenerates the tree with new values
 
 ### Mutate.Reset
 
-Type: `Button`
+| Type   |
+|:------:|
+| Button |
 
 Resets all _Mutate_ options to default values
 
 ### Transform.X_Offset
 
-> Default: `0`
-
-Type: `number`
-
-Min: `-width`
-
-Max: `width`
+| Type   | Default | Min      | Max     |
+|:------:|:-------:|:--------:|:-------:|
+| Number | `0`     | `-width` | `width` |
 
 Translate the Tree on the X axis
 
 ### Transform.Y_Offset
 
-> Default: `0`
-
-Type: `number`
-
-Min: `-height`
-
-Max: `height`
+| Type   | Default | Min       | Max      |
+|:------:|:-------:|:---------:|:--------:|
+| Number | `0`     | `-height` | `height` |
 
 Translate the Tree on the Y axis
 
 ### Transform.Scale
 
-> Default: `1`
-
-Type: `number`
-
-Min: `0`
-
-Max: `5`
+| Type   | Default | Min | Max |
+|:------:|:-------:|:---:|:---:|
+| Number | `1`     | `0` | `5` |
 
 Scale the Tree
 
 ### Transform.Rotate
 
-> Default: `0`
-
-Type: `number`
-
-Min: `-PI`
-
-Max: `PI`
+| Type   | Default | Min   | Max   |
+|:------:|:-------:|:-----:|:-----:|
+| Number | `0`     | `-PI` | `PI`  |
 
 Rotate the Tree around the root of the tree
 
 ### Transform.Center
 
-Type: `Button`
+| Type   |
+|:------:|
+| Button |
 
 Button to set the offsets centrally on the screen
 
 ### Transform.Reset
 
-Type: `Button`
+| Type   |
+|:------:|
+| Button |
 
 Resets all _Transform_ options to default values
 
 ### Appearance.Use_Colors
 
-> Default: `true`
-
-Type: `boolean`
+| Type    | Default   |
+|:-------:|:---------:|
+| Boolean | `true`    |
 
 Branches have different colors. If false all branches are white
 
@@ -237,29 +203,33 @@ Branches have different colors. If false all branches are white
 
 Type: `color`
 
+| Type  | Default   |
+|:-----:|:---------:|
+| Color | `#000000` |
+
 Background color of the window
 
 ### Appearance.Leaves
 
-> Default: `true`
-
-Type: `boolean`
+| Type    | Default |
+|:-------:|:-------:|
+| Boolean | `true`  |
 
 Shows white dots on the ends of all the end branches
 
 ### Appearance.Mirror
 
-> Default: `off`
-
-Type: `string`
-
-Options: `'off', 'y', 'x y'`
+| Type   | Default | Options            |
+|:------:|:-------:|:------------------:|
+| String | `off`   | `'off', 'y', 'x y'`|
 
 Mirrors the Tree on other axis. Start point remains the same
 
 ### Save
 
-Type: `Button`
+| Type   |
+|:------:|
+| Button |
 
 Saves the current drawing as a PNG file
 

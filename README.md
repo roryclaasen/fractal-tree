@@ -191,17 +191,13 @@ Resets all _Transform_ options to default values
 
 ### Appearance.Use_Colors
 
-| Type    | Default   |
-|:-------:|:---------:|
-| Boolean | `true`    |
+| Type    | Default |
+|:-------:|:-------:|
+| Boolean | `true`  |
 
 Branches have different colors. If false all branches are white
 
 ### Appearance.Background
-
-> Default: `#000000`
-
-Type: `color`
 
 | Type  | Default   |
 |:-----:|:---------:|
@@ -219,9 +215,9 @@ Shows white dots on the ends of all the end branches
 
 ### Appearance.Mirror
 
-| Type   | Default | Options            |
-|:------:|:-------:|:------------------:|
-| String | `off`   | `'off', 'y', 'x y'`|
+| Type   | Default | Options             |
+|:------:|:-------:|:-------------------:|
+| String | `off`   | `'off', 'y', 'x y'` |
 
 Mirrors the Tree on other axis. Start point remains the same
 

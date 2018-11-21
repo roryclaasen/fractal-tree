@@ -6,11 +6,17 @@
 
 ## Contents
 
-- [Fractal Tree](#fractal-tree)
-- [Contents](#contents)
+- [Examples](#examples)
 - [Options](#options)
 - [Branches](#branches)
 - [License](#license)
+
+## Examples
+
+![Example][ExampleTree-0]
+![Example][ExampleTree-1]
+![Example][ExampleTree-2]
+![Example][ExampleTree-3]
 
 ## Options
 
@@ -122,7 +128,7 @@ Intensity of angle interference
 __Example__
 
 ```javascript
-tree.branchMultiplier += (mutate.branchMultiplier * Math.random()) - (mutate.branchMultiplier / 2);
+tree.branchMultiplier += ((Math.random() * 2) - 1) * mutate.branchMultiplier;
 ```
 
 ### Mutate.Make
@@ -240,3 +246,8 @@ Saves the current drawing as a PNG file
 This project is licensed under the MIT License - see the [license file](LICENSE) for details
 
 [CI-master]: https://travis-ci.com/roryclaasen/fractal-tree.svg?branch=master "Travis CI"
+
+[ExampleTree-0]: _examples/tree_0.png "Fractal Tree 0"
+[ExampleTree-1]: _examples/tree_1.png "Fractal Tree 1"
+[ExampleTree-2]: _examples/tree_2.png "Fractal Tree 2"
+[ExampleTree-3]: _examples/tree_3.png "Fractal Tree 3"

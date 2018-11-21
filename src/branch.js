@@ -49,7 +49,7 @@ export default class Branch {
 		let multiplier = branchMultiplier || 1;
 		if (mutate.active) {
 			newAngle += Math.random() * mutate.angle;
-			multiplier += (mutate.branchMultiplier * Math.random()) - (mutate.branchMultiplier / 2);
+			multiplier += ((Math.random() * 2) - 1) * mutate.branchMultiplier;
 		}
 		newAngle *= left ? 1 : -1;
 		dir.rotate(newAngle);

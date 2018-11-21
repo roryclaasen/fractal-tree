@@ -1,4 +1,4 @@
-import { GenerateHSBColor } from './util';
+import { NormalizeHSBColor } from './util';
 import Branch from './branch';
 /**
  * Tree, contains branches
@@ -41,8 +41,8 @@ export default class Tree {
 						left = Math.random() <= options.mutate.branch;
 						right = Math.random() <= options.mutate.branch;
 					}
-					if (left) this.branches.push(branch.branch(i, true));
-					if (right) this.branches.push(branch.branch(i, false));
+					if (left) this.branches.push(branch.branch(true));
+					if (right) this.branches.push(branch.branch(false));
 				}
 				this.branches[j].finished = true;
 			}
@@ -55,15 +55,17 @@ export default class Tree {
 	 * @memberof Tree
 	 */
 	draw(sketch) {
-		const { maxBranches } = this.options.tree;
+		const { appearance, tree } = this.options;
+		const { maxBranches } = tree;
 
 		sketch.colorMode(sketch.HSB, maxBranches);
 
+		const saturation = appearance.saturation * (maxBranches / 360);
+		const brightness = appearance.brightness * (maxBranches / 360);
+
 		for (let i = 0; i < this.branches.length; i += 1) {
 			const branch = this.branches[i];
-
-			sketch.stroke(GenerateHSBColor(branch.level, maxBranches, this.options.appearance.useColors));
-			branch.draw(sketch);
+			branch.draw(sketch, saturation, brightness);
 
 			if (this.options.appearance.leaves && branch.level === maxBranches - 1) {
 				sketch.stroke(maxBranches, 0, maxBranches, maxBranches);

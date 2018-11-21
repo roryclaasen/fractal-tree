@@ -55,7 +55,9 @@ const options = {
 		}
 	},
 	appearance: {
-		useColors: true,
+		saturation: 360,
+		brightness: 360,
+		gradient: true,
 		background: '#000000',
 		leaves: true,
 		mirror: 'off',
@@ -111,7 +113,9 @@ offset.add(options.transform, 'center');
 offset.add(options.transform, 'reset');
 
 const appearance = gui.addFolder('Appearance');
-appearance.add(options.appearance, 'useColors');
+appearance.add(options.appearance, 'saturation', 0, 360);
+appearance.add(options.appearance, 'brightness', 0, 360);
+appearance.add(options.appearance, 'gradient');
 appearance.addColor(options.appearance, 'background');
 appearance.add(options.appearance, 'leaves');
 appearance.add(options.appearance, 'mirror', options.appearance.mirrorOptions);

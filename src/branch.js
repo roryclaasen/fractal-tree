@@ -1,5 +1,7 @@
 import P5 from 'p5';
 
+import { NormalizeHSBColor } from './util';
+
 /**
  * Branches for the Tree
  *
@@ -22,25 +24,49 @@ export default class Branch {
 		this.level = level;
 
 		this.finished = false;
+
+		this.numSegments = 4;
+		this.tStep = 1.0 / this.numSegments;
 	}
 
 	/**
 	 * Draw the current branch
 	 * @param {P5} sketch
+	 * @param {number} saturation
+	 * @param {number} brightness
 	 * @memberof Branch
 	 */
-	draw(sketch) {
-		sketch.line(this.begin.x, this.begin.y, this.end.x, this.end.y);
+	draw(sketch, saturation, brightness) {
+		const { appearance } = this.options;
+		if (!appearance.gradient) {
+			sketch.stroke(NormalizeHSBColor(this.level, saturation, brightness, this.options.tree.maxBranches));
+			sketch.line(this.begin.x, this.begin.y, this.end.x, this.end.y);
+		} else {
+			const colorStart = sketch.color(NormalizeHSBColor(this.level, saturation, brightness, this.options.tree.maxBranches - 1));
+			const colorEND = sketch.color(NormalizeHSBColor(this.level + 1, saturation, brightness, this.options.tree.maxBranches - 1));
+
+			const delta = P5.Vector.sub(this.end, this.begin);
+			let t = 0.0;
+
+			for (let i = 0; i < this.numSegments; i += 1) {
+				const colorPos = i * (1 / this.numSegments);
+				const stroke = sketch.lerpColor(colorStart, colorEND, colorPos);
+				sketch.stroke(stroke);
+
+				const nextT = t + this.tStep;
+				sketch.line(this.begin.x + delta.x * t, this.begin.y + delta.y * t, this.begin.x + delta.x * nextT, this.begin.y + delta.y * nextT);
+				t = nextT;
+			}
+		}
 	}
 
 	/**
 	 * Create child branch, left or right
-	 * @param {number} level How far along is the Branch
 	 * @param {boolean} [left=false] Is the left most branch
 	 * @returns {Branch} New child Branch Object
 	 * @memberof Branch
 	 */
-	branch(level, left = false) {
+	branch(left = false) {
 		const { mutate } = this.options;
 		const { angle, branchMultiplier } = this.options.tree;
 
@@ -56,7 +82,7 @@ export default class Branch {
 		dir.mult(multiplier);
 
 		const newEnd = P5.Vector.add(this.end, dir);
-		const branch = new Branch(this.end, newEnd, this.options, level);
+		const branch = new Branch(this.end, newEnd, this.options, this.level + 1);
 		return branch;
 	}
 }

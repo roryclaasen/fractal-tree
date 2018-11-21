@@ -41,7 +41,9 @@
   - [Transform.Center](#transformcenter)
   - [Transform.Reset](#transformreset)
 - Appearance
-  - [Appearance.Use_Colors](#appearanceuse_colors)
+  - [Appearance.Gradient](#appearancegradient)
+  - [Appearance.Saturation](#appearancesaturation)
+  - [Appearance.Brightness](#appearancebrightness)
   - [Appearance.Background](#appearancebackground)
   - [Appearance.Leaves](#appearanceleaves)
   - [Appearance.Mirror](#appearancemirror)
@@ -195,13 +197,31 @@ Button to set the offsets centrally on the screen
 
 Resets all _Transform_ options to default values
 
-### Appearance.Use_Colors
+### Appearance.Gradient
 
 | Type    | Default |
 |:-------:|:-------:|
 | Boolean | `true`  |
 
-Branches have different colors. If false all branches are white
+Branches colors will blend from one branch to the next
+
+### Appearance.Saturation
+
+| Type   | Default | Min   | Max   |
+|:------:|:-------:|:-----:|:-----:|
+| Number | `360`   | `0`   | `360` |
+
+The saturation of the branch color
+
+For white colored branches set this to  0
+
+### Appearance.Brightness
+
+| Type   | Default | Min   | Max   |
+|:------:|:-------:|:-----:|:-----:|
+| Number | `360`   | `0`   | `360` |
+
+The brightness of the branch color
 
 ### Appearance.Background
 

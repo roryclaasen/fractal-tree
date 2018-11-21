@@ -2,6 +2,7 @@
 
 import { GUI } from 'dat.gui';
 import P5 from 'p5';
+
 import Tree from './tree';
 
 const width = window.innerWidth;
@@ -57,11 +58,21 @@ const options = {
 	appearance: {
 		saturation: 360,
 		brightness: 360,
-		gradient: true,
+		gradient: false,
+		weight: 1,
 		background: '#000000',
 		leaves: true,
 		mirror: 'off',
-		mirrorOptions: ['off', 'y', 'x y']
+		mirrorOptions: ['off', 'y', 'x y'],
+		reset: () => {
+			options.appearance.saturation = 360;
+			options.appearance.brightness = 360;
+			options.appearance.gradient = false;
+			options.appearance.weight = 1;
+			options.appearance.background = '#000000';
+			options.appearance.weight = true;
+			options.appearance.mirror = 'off';
+		}
 	},
 	save: () => {
 		// eslint-disable-next-line no-use-before-define
@@ -107,18 +118,20 @@ mutate.add(options.mutate, 'reset');
 const offset = gui.addFolder('Transform');
 offset.add(options.transform, 'xOffset', -width, width).listen();
 offset.add(options.transform, 'yOffset', -height, height).listen();
-offset.add(options.transform, 'scale', 0, 5).listen();
-offset.add(options.transform, 'rotate', -Math.PI, Math.PI, 0.1).listen();
+offset.add(options.transform, 'scale', 0, 5, 0.01).listen();
+offset.add(options.transform, 'rotate', -Math.PI, Math.PI, 0.01).listen();
 offset.add(options.transform, 'center');
 offset.add(options.transform, 'reset');
 
 const appearance = gui.addFolder('Appearance');
-appearance.add(options.appearance, 'saturation', 0, 360);
-appearance.add(options.appearance, 'brightness', 0, 360);
-appearance.add(options.appearance, 'gradient');
-appearance.addColor(options.appearance, 'background');
-appearance.add(options.appearance, 'leaves');
-appearance.add(options.appearance, 'mirror', options.appearance.mirrorOptions);
+appearance.add(options.appearance, 'saturation', 0, 360).listen();
+appearance.add(options.appearance, 'brightness', 0, 360).listen();
+appearance.add(options.appearance, 'gradient').listen();
+appearance.add(options.appearance, 'weight', 1, 15, 1).listen();
+appearance.addColor(options.appearance, 'background').listen();
+appearance.add(options.appearance, 'leaves').listen();
+appearance.add(options.appearance, 'mirror', options.appearance.mirrorOptions).listen();
+appearance.add(options.appearance, 'reset');
 
 gui.add(options, 'save');
 

@@ -201,7 +201,7 @@ Resets all _Transform_ options to default values
 
 | Type    | Default |
 |:-------:|:-------:|
-| Boolean | `true`  |
+| Boolean | `false` |
 
 Branches colors will blend from one branch to the next
 

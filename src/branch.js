@@ -38,6 +38,7 @@ export default class Branch {
 	 */
 	draw(sketch, saturation, brightness) {
 		const { appearance } = this.options;
+		sketch.strokeWeight(appearance.weight);
 		if (!appearance.gradient) {
 			sketch.stroke(NormalizeHSBColor(this.level, saturation, brightness, this.options.tree.maxBranches));
 			sketch.line(this.begin.x, this.begin.y, this.end.x, this.end.y);
@@ -46,9 +47,8 @@ export default class Branch {
 			const colorEND = sketch.color(NormalizeHSBColor(this.level + 1, saturation, brightness, this.options.tree.maxBranches - 1));
 
 			const delta = P5.Vector.sub(this.end, this.begin);
-			let t = 0.0;
 
-			for (let i = 0; i < this.numSegments; i += 1) {
+			for (let i = 0, t = 0.0; i < this.numSegments; i += 1) {
 				const colorPos = i * (1 / this.numSegments);
 				const stroke = sketch.lerpColor(colorStart, colorEND, colorPos);
 				sketch.stroke(stroke);

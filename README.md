@@ -41,12 +41,14 @@
   - [Transform.Center](#transformcenter)
   - [Transform.Reset](#transformreset)
 - Appearance
-  - [Appearance.Gradient](#appearancegradient)
   - [Appearance.Saturation](#appearancesaturation)
   - [Appearance.Brightness](#appearancebrightness)
+  - [Appearance.Gradient](#appearancegradient)
+  - [Appearance.Weight](#appearanceweight)
   - [Appearance.Background](#appearancebackground)
   - [Appearance.Leaves](#appearanceleaves)
   - [Appearance.Mirror](#appearancemirror)
+  - [Appearance.Reset](#appearancereset)
 - [Save](#save)
 
 ### Tree.Length
@@ -197,14 +199,6 @@ Button to set the offsets centrally on the screen
 
 Resets all _Transform_ options to default values
 
-### Appearance.Gradient
-
-| Type    | Default |
-|:-------:|:-------:|
-| Boolean | `false` |
-
-Branches colors will blend from one branch to the next
-
 ### Appearance.Saturation
 
 | Type   | Default | Min   | Max   |
@@ -222,6 +216,22 @@ For white colored branches set this to  0
 | Number | `360`   | `0`   | `360` |
 
 The brightness of the branch color
+
+### Appearance.Gradient
+
+| Type    | Default |
+|:-------:|:-------:|
+| Boolean | `false` |
+
+Branches colors will blend from one branch to the next
+
+### Appearance.Weight
+
+| Type   | Default | Min | Max  |
+|:------:|:-------:|:---:|:----:|
+| Number | `1`     | `1` | `15` |
+
+Stroke Weight of the lines being drawn
 
 ### Appearance.Background
 
@@ -246,6 +256,14 @@ Shows white dots on the ends of all the end branches
 | String | `off`   | `'off', 'y', 'x y'` |
 
 Mirrors the Tree on other axis. Start point remains the same
+
+### Appearance.Reset
+
+| Type   |
+|:------:|
+| Button |
+
+Resets all _Appearance_ options to default values
 
 ### Save
 

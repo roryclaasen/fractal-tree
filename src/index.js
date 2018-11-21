@@ -70,7 +70,7 @@ const options = {
 			options.appearance.gradient = false;
 			options.appearance.weight = 1;
 			options.appearance.background = '#000000';
-			options.appearance.weight = true;
+			options.appearance.leaves = true;
 			options.appearance.mirror = 'off';
 		}
 	},

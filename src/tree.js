@@ -1,4 +1,3 @@
-import { NormalizeHSBColor } from './util';
 import Branch from './branch';
 /**
  * Tree, contains branches

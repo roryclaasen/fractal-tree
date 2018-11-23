@@ -20,7 +20,7 @@ const options = {
 			options.tree.angle = Math.PI / 4;
 			options.tree.branchMultiplier = 0.67;
 			// eslint-disable-next-line no-use-before-define
-			makeTrees();
+			makeTree();
 		}
 	},
 	mutate: {
@@ -30,7 +30,7 @@ const options = {
 		branchMultiplier: 0,
 		make: () => {
 			// eslint-disable-next-line no-use-before-define
-			makeTrees();
+			makeTree();
 		},
 		reset: () => {
 			options.mutate.active = false;
@@ -95,23 +95,26 @@ function root() {
 
 const tree = new Tree(root(), options);
 
-function makeTrees() {
+/**
+ * Force re-generate the tree
+ */
+function makeTree() {
 	tree.makeTree(root(), options);
 }
 
 const gui = new GUI();
 const treeOptions = gui.addFolder('Tree');
-treeOptions.add(options.tree, 'length', 0, 500).onChange((val) => makeTrees()).listen();
-treeOptions.add(options.tree, 'maxBranches', 1, 20, 1).onChange((val) => makeTrees()).listen();
-treeOptions.add(options.tree, 'angle', -Math.PI, Math.PI, 0.1).onChange((val) => makeTrees()).listen();
-treeOptions.add(options.tree, 'branchMultiplier', 0.1, 2).onChange((val) => makeTrees()).listen();
+treeOptions.add(options.tree, 'length', 0, 500).onChange((val) => makeTree()).listen();
+treeOptions.add(options.tree, 'maxBranches', 1, 20, 1).onChange((val) => makeTree()).listen();
+treeOptions.add(options.tree, 'angle', -Math.PI, Math.PI, 0.1).onChange((val) => makeTree()).listen();
+treeOptions.add(options.tree, 'branchMultiplier', 0.1, 2).onChange((val) => makeTree()).listen();
 treeOptions.add(options.tree, 'reset');
 
 const mutate = gui.addFolder('Mutate');
-mutate.add(options.mutate, 'active').onChange((val) => makeTrees());
-mutate.add(options.mutate, 'branch', 0, 1, 0.05).onChange((val) => makeTrees()).listen();
-mutate.add(options.mutate, 'angle', 0, Math.PI, 0.1).onChange((val) => makeTrees()).listen();
-mutate.add(options.mutate, 'branchMultiplier', 0, 1, 0.05).onChange((val) => makeTrees()).listen();
+mutate.add(options.mutate, 'active').onChange((val) => makeTree());
+mutate.add(options.mutate, 'branch', 0, 1, 0.05).onChange((val) => makeTree()).listen();
+mutate.add(options.mutate, 'angle', 0, Math.PI, 0.1).onChange((val) => makeTree()).listen();
+mutate.add(options.mutate, 'branchMultiplier', 0, 1, 0.05).onChange((val) => makeTree()).listen();
 mutate.add(options.mutate, 'make');
 mutate.add(options.mutate, 'reset');
 
